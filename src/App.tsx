@@ -1,28 +1,35 @@
-import { useState } from 'react'
+import { Link, Route, Routes } from 'react-router-dom'
 import './App.css'
+import Home from './pages/Home'
+import About from './pages/About'
+import FormDemo from './pages/FormDemo'
+import Dashboard from './pages/Dashboard'
+import DashboardHOC from './pages/DashboardHOC'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <section id="center">
+    <div>
+      <h1>React Demo Didattica</h1>
 
-        <div>
-          <h1>Get started</h1>
-        </div>
-        <button
-          type="button"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+			<nav>
+				<Link to="/">Home</Link> |{" "}
+				<Link to="/form-demo">Form Demo</Link> |{" "}
+				<Link to="/HOC">HOC</Link> |{" "}
+				<Link to="/compound">Compound</Link> |{" "}
+				<Link to="/dashboard">Dashboard (Hook)</Link> |{" "}
+				<Link to="/dashboard-hoc">Dashboard (HOC)</Link> |{" "}
+				<Link to="/about">About</Link>
+			</nav>
 
-      <div className="ticks"></div>
-
-      <div className="ticks"></div>
-    </>
+			<Routes>
+				<Route path='/' element={<Home />} />
+				<Route path='/form-demo' element={<FormDemo />} />
+				<Route path='/about' element={<About />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard-hoc" element={<DashboardHOC />} />
+			</Routes>
+    </div>
   )
 }
 
