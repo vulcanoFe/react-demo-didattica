@@ -25,6 +25,7 @@ export function useLifecycleLogger(
 		Object.entries(deps).forEach(([key, value]) => {
 			console.log(`   ${key}:`, value)
 		})
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, deps ? Object.values(deps) : [])
 
 }
