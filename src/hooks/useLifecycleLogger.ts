@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 export function useLifecycleLogger(
 	name: string,
-	deps?: Record<string, any>
+	deps?: Record<string, unknown>
 ) {
 
 	console.log(`🔄 RENDER ${name}`)
@@ -14,7 +14,7 @@ export function useLifecycleLogger(
 		return () => {
 			console.log(`❌ UNMOUNT ${name}`)
 		}
-	}, [])
+	}, [name])
 
 	// UPDATE
 	useEffect(() => {
