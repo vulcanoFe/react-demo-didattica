@@ -8,9 +8,9 @@ import DashboardHOC from './pages/DashboardHOC'
 
 function App() {
 
-  return (
-    <div>
-      <h1>React Demo Didattica</h1>
+	return (
+		<div>
+			<h1>React Demo Didattica</h1>
 
 			<nav>
 				<Link to="/">Home</Link> |{" "}
@@ -26,11 +26,11 @@ function App() {
 				<Route path='/' element={<Home />} />
 				<Route path='/form-demo' element={<FormDemo />} />
 				<Route path='/about' element={<About />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard-hoc" element={<DashboardHOC />} />
+				<Route path="/dashboard" element={<Dashboard />} />
+				<Route path="/dashboard-hoc" element={<DashboardHOC />} />
 			</Routes>
-    </div>
-  )
+		</div>
+	)
 }
 
 export default App

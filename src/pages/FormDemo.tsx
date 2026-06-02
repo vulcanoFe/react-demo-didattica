@@ -5,20 +5,20 @@ import { useLifecycleLogger } from "../hooks/useLifecycleLogger"
 import styles from "./FormDemo.module.css"
 
 function FormDemo() {
-  useLifecycleLogger("FormDemo")
+	useLifecycleLogger("FormDemo")
 
-  console.log("🔄 RENDER FormDemo")
+	console.log("🔄 RENDER FormDemo")
 
-	
-const validateNameEmail = (values) => {
-  const errors: any = {}
 
-  if (!values.name) errors.name = "Campo obbligatorio"
-  if (!values.email) errors.email = "Campo obbligatorio"
-  else if (!values.email.includes("@")) errors.email = "Email non valida"
+	const validateNameEmail = (values: Record<string, string>) => {
+		const errors: Record<string, string> = {}
 
-  return errors
-}
+		if (!values.name) errors.name = "Campo obbligatorio"
+		if (!values.email) errors.email = "Campo obbligatorio"
+		else if (!values.email.includes("@")) errors.email = "Email non valida"
+
+		return errors
+	}
 
 
 	const { values, handleChange, handleSubmit, errors } = useForm(
@@ -26,15 +26,15 @@ const validateNameEmail = (values) => {
 		validateNameEmail
 	)
 
-  return (
-    <div>
-      <h2>Controlled vs Uncontrolled</h2>
+	return (
+		<div>
+			<h2>Controlled vs Uncontrolled</h2>
 
-      <ControlledInput />
+			<ControlledInput />
 
-      <hr />
+			<hr />
 
-      <UncontrolledInput />
+			<UncontrolledInput />
 
 			<hr />
 
@@ -48,9 +48,8 @@ const validateNameEmail = (values) => {
 						name="name"
 						value={values.name}
 						onChange={handleChange}
-						className={`${styles.input} ${
-							errors.name ? styles.inputError : ""
-						}`}
+						className={`${styles.input} ${errors.name ? styles.inputError : ""
+							}`}
 					/>
 
 					<div className={styles.errorContainer}>
@@ -66,9 +65,8 @@ const validateNameEmail = (values) => {
 						name="email"
 						value={values.email}
 						onChange={handleChange}
-						className={`${styles.input} ${
-							errors.email ? styles.inputError : ""
-						}`}
+						className={`${styles.input} ${errors.email ? styles.inputError : ""
+							}`}
 					/>
 
 					<div className={styles.errorContainer}>
@@ -83,8 +81,8 @@ const validateNameEmail = (values) => {
 				</div>
 			</form>
 
-    </div>
-  )
+		</div>
+	)
 }
 
 export default FormDemo
