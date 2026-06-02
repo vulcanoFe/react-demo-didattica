@@ -5,6 +5,7 @@ import About from './pages/About'
 import FormDemo from './pages/FormDemo'
 import Dashboard from './pages/Dashboard'
 import DashboardHOC from './pages/DashboardHOC'
+import Compound from './pages/Compound'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
 				<Route path='/about' element={<About />} />
 				<Route path="/dashboard" element={<Dashboard />} />
 				<Route path="/dashboard-hoc" element={<DashboardHOC />} />
+				<Route path="/compound" element={<Compound />} />
 			</Routes>
 		</div>
 	)
