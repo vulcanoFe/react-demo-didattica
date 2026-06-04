@@ -1,7 +1,13 @@
-.container {
+.cryptoDataRow {
+	display: flex;
+	justify-content: center;
+}
+
+.cryptoDataCard {
     padding: 16px;
     border-radius: 12px;
     transition: all 0.3s ease;
+		width: 300px;
 }
 
 /* crescita */

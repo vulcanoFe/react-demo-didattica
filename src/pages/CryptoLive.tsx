@@ -150,10 +150,12 @@ export default function CryptoLive() {
 			* --------------------------
 			* Render basato su stato Redux
 			*/}
-			<div className={`${styles.container} ${trendClass}`}>
-				<p>Stato: {stato}</p>
-				<p>Prezzo: {prezzo}</p>
-				<p>Variazione 24h: {variazione}%</p>
+			<div className={`${styles.cryptoDataRow}`}>
+				<div className={`${styles.cryptoDataCard} ${trendClass}`}>
+					<p>Stato: {stato}</p>
+					<p>Prezzo: {prezzo}</p>
+					<p>Variazione 24h: {variazione}%</p>
+				</div>
 			</div>
 		</div>
 	)

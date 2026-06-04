@@ -38,13 +38,13 @@ export const cryptoMiddleware: Middleware = (store) => {
 	let currentSymbol: string | null = null;
 
 	// Timeout per retry (serve per poterlo cancellare)
-	let retryTimeout: any = null;
+	let retryTimeout: ReturnType<typeof setTimeout> | null = null;
 
 	// Numero tentativi di riconnessione (per backoff)
 	let tentativi = 0;
 
 	// Serve per rilevare quando non stanno arrivando messaggi e segnalarlo all'utente
-	let inactivityTimeout: any = null;
+	let inactivityTimeout: ReturnType<typeof setTimeout> | null = null;
 
 	/**
 	 * 🔁 Pipeline del middleware Redux
