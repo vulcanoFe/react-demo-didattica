@@ -40,6 +40,7 @@ interface CryptoState {
 	stato: "connesso" | "disconnesso";
 	prezzo: number | null;
 	variazione: number | null;
+	errore?: string | null;
 }
 
 /**
@@ -159,7 +160,17 @@ const cryptoSlice = createSlice({
 		) {
 			state.prezzo = action.payload.prezzo;
 			state.variazione = action.payload.variazione;
+		},
+
+		/**
+	 * ❌ SET ERRORE
+	 * -------------------------------------------------
+	 * Aggiorna lo stato quando si verifica un errore.
+	 */
+		setErrore(state, action: PayloadAction<string>) {
+			state.errore = action.payload;
 		}
+
 	}
 });
 
@@ -172,7 +183,7 @@ const cryptoSlice = createSlice({
  * - Componenti (start/stop)
  * - Middleware (setConnesso, setDati, setDisconnesso)
  */
-export const { startSocket, stopSocket, setConnesso, setDisconnesso, setDati } = cryptoSlice.actions;
+export const { startSocket, stopSocket, setConnesso, setDisconnesso, setDati, setErrore } = cryptoSlice.actions;
 
 /**
  * 📦 Export reducer

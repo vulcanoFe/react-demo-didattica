@@ -25,6 +25,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { startSocket, stopSocket } from "../slices/cryptoslice";
 import type { RootState } from "../store";
+import styles from "./CryptoLive.module.css";
 
 export default function CryptoLive() {
 
@@ -103,6 +104,13 @@ export default function CryptoLive() {
 	 * Componente dichiarativo:
 	 * la UI riflette SEMPRE lo stato Redux.
 	 */
+	// logica per il colore relativo al trend
+	let trendClass = styles.neutral;
+
+	if (variazione !== null) {
+		if (variazione > 0) trendClass = styles.up;
+		else if (variazione < 0) trendClass = styles.down;
+	}
 	return (
 		<div>
 			<h2>📈 Crypto Live</h2>
@@ -120,16 +128,16 @@ export default function CryptoLive() {
 				/>
 
 				{/* 
-                 * 🟢 START
-                 * type="submit" → trigger handleSubmit
-                 */}
+				* 🟢 START
+				* type="submit" → trigger handleSubmit
+				*/}
 				<button type="submit">🟢 Avvia</button>
 
 				{/* 
-                 * 🛑 STOP
-                 * type="button" CRUCIALE:
-                 * evita submit del form (bug risolto)
-                 */}
+				* 🛑 STOP
+				* type="button" CRUCIALE:
+				* evita submit del form (bug risolto)
+				*/}
 				<button type="button" onClick={handleStop}>
 					🛑 Stop
 				</button>
@@ -138,13 +146,15 @@ export default function CryptoLive() {
 			<hr />
 
 			{/* 
-             * 📊 DATA DISPLAY
-             * --------------------------
-             * Render basato su stato Redux
-             */}
-			<p>Stato: {stato}</p>
-			<p>Prezzo: {prezzo}</p>
-			<p>Variazione 24h: {variazione}%</p>
+			* 📊 DATA DISPLAY
+			* --------------------------
+			* Render basato su stato Redux
+			*/}
+			<div className={`${styles.container} ${trendClass}`}>
+				<p>Stato: {stato}</p>
+				<p>Prezzo: {prezzo}</p>
+				<p>Variazione 24h: {variazione}%</p>
+			</div>
 		</div>
 	)
 }

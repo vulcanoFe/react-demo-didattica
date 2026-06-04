@@ -16,7 +16,7 @@
  */
 
 import { type Middleware } from "@reduxjs/toolkit";
-import { setConnesso, setDati, setDisconnesso, startSocket, stopSocket } from "../slices/cryptoslice";
+import { setConnesso, setDati, setDisconnesso, setErrore, startSocket, stopSocket } from "../slices/cryptoslice";
 
 export const cryptoMiddleware: Middleware = (store) => {
 
@@ -42,6 +42,9 @@ export const cryptoMiddleware: Middleware = (store) => {
 
 	// Numero tentativi di riconnessione (per backoff)
 	let tentativi = 0;
+
+	// Serve per rilevare quando non stanno arrivando messaggi e segnalarlo all'utente
+	let inactivityTimeout: any = null;
 
 	/**
 	 * 🔁 Pipeline del middleware Redux
@@ -162,6 +165,14 @@ export const cryptoMiddleware: Middleware = (store) => {
 				console.log("✅ Connesso");
 				store.dispatch(setConnesso());
 				tentativi = 0;
+
+				inactivityTimeout = setTimeout(() => {
+					console.warn("⚠️ Nessun dato ricevuto, symbol probabilmente invalido");
+					store.dispatch(setErrore("⚠️ Nessun dato ricevuto, symbol probabilmente invalido"));
+					store.dispatch(setDisconnesso());
+					ws?.close();
+				}, 3000); // 3 secondi
+
 			}
 
 			/**
@@ -180,6 +191,13 @@ export const cryptoMiddleware: Middleware = (store) => {
 						variazione: parseFloat(data.P)
 					})
 				);
+
+
+				if (inactivityTimeout) {
+					clearTimeout(inactivityTimeout);
+					inactivityTimeout = null;
+				}
+
 			};
 
 			/**
