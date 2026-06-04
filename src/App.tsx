@@ -6,6 +6,9 @@ import FormDemo from './pages/FormDemo'
 import Dashboard from './pages/Dashboard'
 import DashboardHOC from './pages/DashboardHOC'
 import Compound from './pages/Compound'
+import { lazy, Suspense } from 'react'
+
+const CryptoLive = lazy(() => import('./pages/CryptoLive'));
 
 function App() {
 
@@ -20,6 +23,7 @@ function App() {
 				<Link to="/compound">Compound</Link> |{" "}
 				<Link to="/dashboard">Dashboard (Hook)</Link> |{" "}
 				<Link to="/dashboard-hoc">Dashboard (HOC)</Link> |{" "}
+				<Link to="/crypto">Crypto Live</Link> |{" "}
 				<Link to="/about">About</Link>
 			</nav>
 
@@ -30,6 +34,16 @@ function App() {
 				<Route path="/dashboard" element={<Dashboard />} />
 				<Route path="/dashboard-hoc" element={<DashboardHOC />} />
 				<Route path="/compound" element={<Compound />} />
+
+				<Route
+					path="/crypto"
+					element={
+						<Suspense fallback={<div>⏳ Caricamento Crypto...</div>}>
+							<CryptoLive />
+						</Suspense>
+					}
+				/>
+
 			</Routes>
 		</div>
 	)
