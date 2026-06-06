@@ -19,7 +19,6 @@ function App() {
 			<nav>
 				<Link to="/">Home</Link> |{" "}
 				<Link to="/form-demo">Form Demo</Link> |{" "}
-				<Link to="/HOC">HOC</Link> |{" "}
 				<Link to="/compound">Compound</Link> |{" "}
 				<Link to="/dashboard">Dashboard (Hook)</Link> |{" "}
 				<Link to="/dashboard-hoc">Dashboard (HOC)</Link> |{" "}
