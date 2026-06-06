@@ -27,7 +27,27 @@ function Dashboard() {
 	}
 
 	console.log("✅ AUTH → render dashboard")
-	return <h2>Dashboard (Custom Hook)</h2>
+	return (
+		<div>
+			<h2>Dashboard (Custom Hook)</h2>
+
+			{/*
+			 * Sezione informativa sul pattern utilizzato.
+			 * Mostra all'utente quale pattern è in uso e offre
+			 * un link diretto alla versione HOC per confronto.
+			 */}
+			<p>
+				Questo componente protegge la route usando un <strong>Custom Hook</strong>{" "}
+				(<code>useAuth</code>): la logica di autenticazione è scritta direttamente
+				qui dentro.
+			</p>
+			<p>
+				Per vedere lo stesso esempio risolto con il pattern <strong>HOC</strong>{" "}
+				e uno schema riepilogativo delle differenze:
+			</p>
+			<a href="/dashboard-hoc">Vai all'esempio con HOC →</a>
+		</div>
+	)
 }
 
 export default Dashboard

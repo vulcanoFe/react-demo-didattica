@@ -1,10 +1,18 @@
 import { Accordion } from "../components/accordion/Accordion"
+import schema from "../assets/compound_components_accordion_schema.svg"
 
 export default function Compound() {
 	return (
 		<div style={{ padding: 20, fontFamily: "sans-serif" }}>
 			<h1>Compound Components - Reusable Accordion</h1>
+			<h2>Schema</h2>
+			{/* Schema riepilogativo del pattern — file statico da public/ */}
+			<img
+				src={schema}
+				alt="Schema del pattern Compound Components applicato all'Accordion"
+			/>
 
+			<h2>Esempio</h2>
 			<Accordion>
 				<Accordion.Item>
 					<Accordion.Header id="compound">

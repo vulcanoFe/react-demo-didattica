@@ -1,0 +1,57 @@
+<svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" role="img" style="">
+  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">HOC vs Custom Hook: confronto strutturale</title>
+  <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Diagramma che mostra come nell'HOC la logica di auth è esterna al componente, mentre nel Custom Hook è interna</desc>
+
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#888780"/>
+    </marker>
+  </defs>
+
+  <!-- ───── Left side: HOC ───── -->
+  <text x="170" y="28" text-anchor="middle" font-size="13" font-weight="500" fill="#3C3489" font-family="sans-serif" style="fill:rgb(60, 52, 137);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:13px;font-weight:500;text-anchor:middle;dominant-baseline:auto">Pattern HOC</text>
+
+  <!-- withAuth box -->
+  <rect x="60" y="42" width="220" height="130" rx="8" fill="#EEEDFE" stroke="#AFA9EC" stroke-width="0.5" style="fill:rgb(238, 237, 254);stroke:rgb(175, 169, 236);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="170" y="62" text-anchor="middle" font-size="12" font-weight="500" fill="#3C3489" font-family="sans-serif" style="fill:rgb(60, 52, 137);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:12px;font-weight:500;text-anchor:middle;dominant-baseline:auto">withAuth( )</text>
+  <text x="170" y="78" text-anchor="middle" font-size="11" fill="#534AB7" font-family="sans-serif" style="fill:rgb(83, 74, 183);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">— logica auth qui —</text>
+
+  <!-- inner component box -->
+  <rect x="85" y="90" width="170" height="68" rx="6" fill="#FFFFFF" stroke="#AFA9EC" stroke-width="0.5" style="fill:rgb(255, 255, 255);stroke:rgb(175, 169, 236);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="170" y="112" text-anchor="middle" font-size="12" font-weight="500" fill="#2C2C2A" font-family="sans-serif" style="fill:rgb(44, 44, 42);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:12px;font-weight:500;text-anchor:middle;dominant-baseline:auto">DashboardContent</text>
+  <text x="170" y="130" text-anchor="middle" font-size="11" fill="#888780" font-family="sans-serif" style="fill:rgb(136, 135, 128);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">solo rendering</text>
+  <text x="170" y="147" text-anchor="middle" font-size="11" fill="#888780" font-family="sans-serif" style="fill:rgb(136, 135, 128);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">non sa nulla di auth</text>
+
+  <!-- label -->
+  <text x="170" y="195" text-anchor="middle" font-size="11" fill="#5F5E5A" font-family="sans-serif" style="fill:rgb(95, 94, 90);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">La guardia è ESTERNA.</text>
+  <text x="170" y="211" text-anchor="middle" font-size="11" fill="#5F5E5A" font-family="sans-serif" style="fill:rgb(95, 94, 90);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Riuso: withAuth(QualsiesiComp)</text>
+
+  <!-- ───── Divider ───── -->
+  <line x1="340" y1="36" x2="340" y2="230" stroke="#D3D1C7" stroke-width="0.5" stroke-dasharray="4 3" style="fill:rgb(0, 0, 0);stroke:rgb(211, 209, 199);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-dasharray:4px, 3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- ───── Right side: Custom Hook ───── -->
+  <text x="510" y="28" text-anchor="middle" font-size="13" font-weight="500" fill="#0C447C" font-family="sans-serif" style="fill:rgb(12, 68, 124);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:13px;font-weight:500;text-anchor:middle;dominant-baseline:auto">Pattern Custom Hook</text>
+
+  <!-- Dashboard box -->
+  <rect x="395" y="42" width="230" height="130" rx="8" fill="#E6F1FB" stroke="#85B7EB" stroke-width="0.5" style="fill:rgb(230, 241, 251);stroke:rgb(133, 183, 235);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="510" y="62" text-anchor="middle" font-size="12" font-weight="500" fill="#0C447C" font-family="sans-serif" style="fill:rgb(12, 68, 124);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:12px;font-weight:500;text-anchor:middle;dominant-baseline:auto">Dashboard</text>
+
+  <!-- useAuth call -->
+  <rect x="420" y="74" width="180" height="30" rx="4" fill="#FFFFFF" stroke="#85B7EB" stroke-width="0.5" style="fill:rgb(255, 255, 255);stroke:rgb(133, 183, 235);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="510" y="94" text-anchor="middle" font-size="11" fill="#185FA5" font-family="sans-serif" style="fill:rgb(24, 95, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">const isLogged = useAuth()</text>
+
+  <!-- if block -->
+  <rect x="420" y="114" width="180" height="44" rx="4" fill="#FFFFFF" stroke="#85B7EB" stroke-width="0.5" style="fill:rgb(255, 255, 255);stroke:rgb(133, 183, 235);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="510" y="132" text-anchor="middle" font-size="11" fill="#2C2C2A" font-family="sans-serif" style="fill:rgb(44, 44, 42);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">if (!isLogged)</text>
+  <text x="510" y="149" text-anchor="middle" font-size="11" fill="#888780" font-family="sans-serif" style="fill:rgb(136, 135, 128);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">return fallback</text>
+
+  <!-- label -->
+  <text x="510" y="195" text-anchor="middle" font-size="11" fill="#5F5E5A" font-family="sans-serif" style="fill:rgb(95, 94, 90);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">La guardia è INTERNA.</text>
+  <text x="510" y="211" text-anchor="middle" font-size="11" fill="#5F5E5A" font-family="sans-serif" style="fill:rgb(95, 94, 90);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Va ripetuta in ogni componente.</text>
+
+  <!-- ───── Bottom comparison row ───── -->
+  <rect x="40" y="240" width="600" height="60" rx="8" fill="#F1EFE8" stroke="#D3D1C7" stroke-width="0.5" style="fill:rgb(241, 239, 232);stroke:rgb(211, 209, 199);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="50" y="260" font-size="12" font-weight="500" fill="#2C2C2A" font-family="sans-serif" style="fill:rgb(44, 44, 42);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:12px;font-weight:500;text-anchor:start;dominant-baseline:auto">Stesso risultato visivo per l'utente — struttura interna completamente diversa</text>
+  <text x="50" y="280" font-size="11" fill="#5F5E5A" font-family="sans-serif" style="fill:rgb(95, 94, 90);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:11px;font-weight:400;text-anchor:start;dominant-baseline:auto">HOC: separazione responsabilità · riuso elevato · componente wrapped è puro</text>
+  <text x="50" y="296" font-size="11" fill="#5F5E5A" font-family="sans-serif" style="fill:rgb(95, 94, 90);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:sans-serif;font-size:11px;font-weight:400;text-anchor:start;dominant-baseline:auto">Hook: più esplicito · immediato da leggere · logica accoppiata al componente</text>
+</svg>
