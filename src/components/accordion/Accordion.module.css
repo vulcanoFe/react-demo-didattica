@@ -1,0 +1,170 @@
+/**
+ * @file Accordion.module.css
+ * @description Stili per il pattern Compound Components dell'Accordion.
+ *
+ * ## Coerenza con il sistema di design
+ * Questo file usa le stesse CSS Custom Properties di index.css e FormDemo.module.css:
+ *   --text, --text-h, --bg, --border, --accent, --accent-bg, --accent-border,
+ *   --shadow, --code-bg, --mono
+ *
+ * Così l'Accordion è automaticamente coerente con il resto dell'app
+ * e supporta il dark mode senza nessuna riga aggiuntiva.
+ *
+ * ## Perché CSS Modules (e non inline styles)?
+ * Il componente originale usava `style={{ ... }}` inline direttamente nel JSX.
+ * Gli stili inline in React hanno alcune limitazioni importanti:
+ *   - Non supportano pseudo-selettori (:hover, :focus, ::before, ::after)
+ *   - Non supportano @keyframes (animazioni CSS)
+ *   - Difficili da sovrascrivere o tematizzare dall'esterno
+ *   - Mescolano logica e presentazione nello stesso file
+ *
+ * I CSS Modules risolvono tutti questi problemi mantenendo lo scoping locale
+ * (ogni classe è unica per componente, nessun conflitto globale).
+ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ROOT — Accordion
+   Il contenitore principale. Usa le stesse variabili di bordo e ombra
+   del FormDemo per sembrare "della stessa famiglia" visiva.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.accordion {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ITEM — Accordion.Item
+   Contenitore di Header + Panel. Separa visivamente le voci con un bordo
+   inferiore, tranne l'ultima (usando :last-child).
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.item {
+  border-bottom: 1px solid var(--border);
+}
+
+/* L'ultimo Item non ha il bordo inferiore: evita la doppia linea
+   con il bordo del contenitore .accordion */
+.item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER — Accordion.Header
+   Pulsante cliccabile. Usa lo stesso sistema di colori degli input del form:
+   sfondo --code-bg a riposo, --accent-bg quando attivo (isOpen = true).
+
+   Nota: la variante "aperta" viene gestita tramite una classe aggiuntiva
+   .headerOpen che il componente applica condizionalmente.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header {
+  cursor: pointer;
+  padding: 12px 16px;
+  background: var(--code-bg);
+  border-radius: 6px;
+  margin: 8px 0;
+
+  /* Layout interno: testo a sinistra, icona freccia a destra */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Tipografia coerente con le label del form */
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-h);
+
+  /* Transizione morbida su colore e ombra — stessa durata degli input */
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+
+  /* Nessun outline di default: lo gestiamo noi con :focus-visible */
+  outline: none;
+  border: 1px solid transparent;
+  user-select: none; /* Evita la selezione del testo al doppio click */
+}
+
+/* Stato hover: stessa sfumatura accent usata per il focus degli input */
+.header:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+}
+
+/* Stato focus da tastiera (accessibilità): ring visibile solo con Tab,
+   non con il mouse. Stessa strategia del :focus degli input. */
+.header:focus-visible {
+  border-color: var(--accent-border);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+/* Modificatore: applicato quando isOpen === true (pannello aperto).
+   Bold + colore accent, stessa tecnica dei badge "Controlled" nel form. */
+.headerOpen {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ICONA FRECCIA (chevron)
+   Ruota di 180° quando il panel è aperto, con la stessa transizione del header.
+   È un elemento puramente decorativo (aria-hidden nel markup).
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.chevron {
+  font-size: 0.7rem;
+  color: var(--text);
+  transition: transform 0.2s ease, color 0.15s ease;
+  flex-shrink: 0; /* Non si comprime se il testo è lungo */
+}
+
+/* Quando il header è aperto, la freccia ruota verso l'alto */
+.headerOpen .chevron {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PANEL — Accordion.Panel
+   Contenuto espandibile. Stesso bordo laterale e inferiore del form,
+   angoli tondi solo in basso (il top è "attaccato" all'header sopra).
+
+   Animazione di entrata: stessa keyframe usata per la tabella nel FormDemo
+   (fadeIn + slide-up), così l'apertura dei panel e la comparsa delle righe
+   hanno un linguaggio visivo uniforme.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.panel {
+  padding: 14px 16px;
+
+  /* Bordo coerente: stessa variabile --border usata ovunque nel form */
+  border: 1px solid var(--border);
+  border-top: none; /* Il top è coperto visivamente dall'header sopra */
+  border-radius: 0 0 6px 6px;
+
+  margin-bottom: 8px;
+
+  /* Tipografia */
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text);
+
+  /* Animazione di entrata identica a tableFadeIn in FormDemo.module.css */
+  animation: panelFadeIn 0.18s ease;
+}
+
+@keyframes panelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
