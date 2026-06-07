@@ -1,0 +1,350 @@
+/**
+ * @file About.module.css
+ * @description Stili per la pagina About.
+ * Usa le stesse CSS Custom Properties di FormDemo.module.css e Accordion.module.css
+ * per garantire coerenza visiva in tutta l'app.
+ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LAYOUT PAGINA
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.page {
+  padding: 24px 32px 64px;
+  text-align: left;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HERO
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.hero {
+  text-align: center;
+  padding: 48px 24px 40px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.heroBadge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--accent-border);
+  background: var(--accent-bg);
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.heroTitle {
+  font-family: var(--mono);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 16px;
+  letter-spacing: -0.03em;
+}
+
+.heroSubtitle {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SEZIONI
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.section {
+  margin-bottom: 52px;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.prose {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin: 0 0 16px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CALLOUT
+   Riquadro evidenziato — stesso stile delle card "spiegazione" del FormDemo
+   ma con angoli completi (non collegato a nessun elemento sotto).
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.callout {
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 20px 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   INLINE CODE
+   Coerente con il tag <code> globale di index.css ma come classe locale
+   per poterlo usare come componente React senza dipendere dagli stili globali.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.inlineCode {
+  font-family: var(--mono);
+  font-size: 0.82em;
+  padding: 2px 6px;
+  background: var(--code-bg);
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   STEP LIST — "Come usare"
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.stepList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.stepNumber {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONCEPT GRID — Card dei concetti esplorati
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.conceptGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.conceptCard {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.conceptCard:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.conceptEmoji {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.conceptTitle {
+  font-size: 0.9rem;
+  color: var(--text-h);
+}
+
+.conceptDesc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0;
+  flex: 1;
+}
+
+.conceptRoute {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: var(--accent-bg);
+  padding: 2px 7px;
+  border-radius: 4px;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   COMPARE GRID — Dev vs Prod
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.compareGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.compareCard {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Linea colorata in cima, stessa tecnica delle explanation card del FormDemo */
+.compareCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.compareCardDev::before {
+  background: var(--accent);
+}
+
+.compareCardProd::before {
+  background: var(--text);
+}
+
+.compareHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.compareTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-h);
+  flex: 1;
+}
+
+.compareDesc {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0 0 14px;
+}
+
+.compareList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.compareList li {
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: var(--text);
+  padding-left: 16px;
+  position: relative;
+}
+
+/* Pallino accent come bullet personalizzato */
+.compareList li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   STACK GRID
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.stackGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stackItem {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--code-bg);
+  min-width: 130px;
+}
+
+.stackItemAccent {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+
+.stackNome {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.stackRuolo {
+  font-size: 0.75rem;
+  color: var(--text);
+  margin-top: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FILE TREE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.fileTree {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: var(--text);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  overflow-x: auto;
+  white-space: pre;
+  text-align: left;
+}
