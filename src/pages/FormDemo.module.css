@@ -1,43 +1,437 @@
-.form {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/**
+ * @file FormDemo.module.css
+ * @description Stili per la pagina FormDemo e i suoi componenti form.
+ *
+ * ## Note sul sistema di design:
+ * Usiamo le CSS Custom Properties (variabili) definite in index.css:
+ * --text, --text-h, --bg, --border, --accent, --accent-bg, --accent-border
+ * Questo garantisce coerenza visiva e supporto automatico al dark mode.
+ *
+ * ## CSS Modules:
+ * In React, i CSS Modules garantiscono che ogni classe sia LOCALE al componente:
+ * `.form` in questo file diventa `.FormDemo_form__xyz` nel browser, evitando
+ * conflitti con classi omonime in altri file CSS.
+ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+  LAYOUT PAGINA
+───────────────────────────────────────────────────────────────────────────── */
+
+.page {
+  padding: 24px 32px 48px;
+  text-align: left;
 }
 
-/* wrapper campo */
+.pageHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.pageSubtitle {
+  color: var(--text);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+  GRIGLIA DEI FORM
+  Affianca i due form orizzontalmente con CSS Grid.
+  Con `auto-fit` e `minmax`, la griglia diventa automaticamente
+  monoColonna su schermi stretti (responsive).
+───────────────────────────────────────────────────────────────────────────── */
+
+.formsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+
+.formColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+  CARD DI SPIEGAZIONE
+  Differenziata per tipo (controlled/uncontrolled) tramite modificatori BEM.
+───────────────────────────────────────────────────────────────────────────── */
+
+.explanation {
+  border-radius: 12px 12px 0 0;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Linea colorata in cima alla card, diversa per i due tipi */
+.explanation::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.explanation--controlled {
+  background: var(--accent-bg);
+}
+
+.explanation--controlled::before {
+  background: var(--accent);
+}
+
+.explanation--uncontrolled {
+  background: color-mix(in srgb, var(--border) 40%, transparent);
+}
+
+.explanation--uncontrolled::before {
+  background: var(--text);
+}
+
+.explanationBadge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.explanationTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 8px;
+}
+
+.explanationText {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+
+.explanationList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--text);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+  FORM
+  Il form è visivamente collegato alla card di spiegazione sopra
+  (angoli tondi solo in basso, bordo continuo).
+───────────────────────────────────────────────────────────────────────────── */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 0 0 12px 12px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+  CAMPI DEL FORM
+───────────────────────────────────────────────────────────────────────────── */
+
 .formField {
   display: flex;
   flex-direction: column;
-  width: 250px; /* larghezza fissa per allineamento */
-  margin-bottom: 12px;
+  margin-bottom: 4px;
 }
 
-/* input */
+.label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-h);
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Asterisco rosso per i campi obbligatori */
+.required {
+  color: #e53e3e;
+  margin-left: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+  INPUT / SELECT
+───────────────────────────────────────────────────────────────────────────── */
+
 .input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-h);
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
+  box-sizing: border-box;
+  appearance: auto; /* Mantiene lo stile nativo per date e select */
 }
 
-/* errore visivo input */
+.input:focus {
+  outline: none;
+  border-color: var(--accent-border);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+/* Stato errore: bordo rosso */
 .inputError {
-  border: 1px solid red;
+  border-color: #fc8181 !important;
+  box-shadow: 0 0 0 3px rgba(252, 129, 129, 0.15) !important;
 }
 
-/* contenitore errore */
+/* ─────────────────────────────────────────────────────────────────────────────
+   RADIO BUTTON
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.radioGroup {
+  display: flex;
+  gap: 20px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+.radioGroupError {
+  border-color: #fc8181;
+  box-shadow: 0 0 0 3px rgba(252, 129, 129, 0.15);
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-h);
+  cursor: pointer;
+}
+
+/* Input radio in stato errore (viene passata la classe tramite logica nel componente) */
+.radioError {
+  accent-color: #e53e3e;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+  MESSAGGI DI ERRORE
+───────────────────────────────────────────────────────────────────────────── */
+
+/* 
+  min-height riservata: tecnica per evitare il "layout shift".
+  Quando l'errore appare/sparisce, l'altezza dell'elemento non cambia
+  bruscamente, evitando che il form "salti" su e giù.
+  Questo migliora l'UX (User Experience) della validazione.
+*/
 .errorContainer {
-  min-height: 16px; /* 👈 spazio RISERVATO sempre */
-  font-size: 0.8rem;
+  min-height: 20px;
   margin-top: 4px;
 }
 
-/* testo errore */
 .error {
-  color: red;
+  color: #e53e3e;
+  font-size: 0.78rem;
+  display: block;
+  animation: errorFadeIn 0.15s ease;
 }
 
-/* bottone centrato */
+@keyframes errorFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+  BOTTONE SUBMIT
+───────────────────────────────────────────────────────────────────────────── */
+
 .buttonRow {
-  margin-top: 10px;
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submitBtn {
+  padding: 10px 24px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+  font-family: inherit;
+}
+
+.submitBtn:hover {
+  opacity: 0.88;
+}
+
+.submitBtn:active {
+  transform: scale(0.97);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+  SEZIONE TABELLA
+───────────────────────────────────────────────────────────────────────────── */
+
+.tableSection {
+  margin-top: 16px;
+  animation: tableFadeIn 0.3s ease;
+}
+
+@keyframes tableFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tableTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-h);
+  margin: 0 0 16px;
+}
+
+/* Wrapper con scroll orizzontale su schermi stretti */
+.tableWrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.th {
+  background: var(--code-bg);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.td {
+  padding: 10px 14px;
+  color: var(--text-h);
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.tr:last-child .td {
+  border-bottom: none;
+}
+
+/* Leggera sfumatura di colore per differenziare le righe per tipo */
+.trControlled {
+  background: color-mix(in srgb, var(--accent-bg) 30%, transparent);
+}
+
+.trUncontrolled {
+  background: var(--bg);
+}
+
+/* Badge ID */
+.idBadge {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text);
+  background: var(--code-bg);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+/* Badge tipo (Controlled / Uncontrolled) */
+.tipoBadge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.tipoBadgeControlled {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+
+.tipoBadgeUncontrolled {
+  background: color-mix(in srgb, var(--border) 60%, transparent);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.emailLink {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.82rem;
+}
+
+.emailLink:hover {
+  text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+  EMPTY STATE
+───────────────────────────────────────────────────────────────────────────── */
+
+.emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text);
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  margin-top: 16px;
+}
+
+.emptyIcon {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 8px;
 }
