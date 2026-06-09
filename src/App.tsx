@@ -1,14 +1,14 @@
 import { Link, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home'
-import About from './pages/About'
-import FormDemo from './pages/FormDemo'
-import Dashboard from './pages/Dashboard'
-import DashboardHOC from './pages/DashboardHOC'
-import Compound from './pages/Compound'
+import About from './pages/about/About'
+import FormDemo from './pages/controlled-vs-uncontrolled/FormDemo'
+import Dashboard from './pages/hoc-vs-custom-hook/Dashboard'
+import DashboardHOC from './pages/hoc-vs-custom-hook/DashboardHOC'
+import Compound from './pages/compound-example/Compound'
 import { lazy, Suspense } from 'react'
 
-const CryptoLive = lazy(() => import('./pages/CryptoLive'));
+const CryptoLive = lazy(() => import('./pages/crypto-live/CryptoLive'));
 
 function App() {
 

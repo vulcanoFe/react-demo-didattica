@@ -1,5 +1,5 @@
-import { Accordion } from "../components/accordion/Accordion"
-import schema from "../assets/compound_components_accordion_schema.svg"
+import { Accordion } from "../../components/accordion/Accordion"
+import schema from "../../assets/compound_components_accordion_schema.svg"
 
 export default function Compound() {
 	return (

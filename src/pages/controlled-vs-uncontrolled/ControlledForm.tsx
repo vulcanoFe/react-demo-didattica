@@ -31,9 +31,9 @@
  * - Più codice boilerplate rispetto agli uncontrolled
  */
 
-import styles from "../pages/FormDemo.module.css"
-import { useForm } from "../hooks/useForm"
-import type { FormEntry } from "../pages/FormDemo"
+import styles from "./FormDemo.module.css"
+import { useForm } from "../../hooks/useForm"
+import type { FormEntry } from "./FormDemo"
 
 // ─────────────────────────────────────────────────────────────────────────────
 // DATI STATICI

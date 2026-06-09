@@ -1,5 +1,5 @@
-import withAuth from "../hoc/withAuth"
-import schema from "../assets/hoc_vs_hook_comparison.svg"
+import withAuth from "../../hoc/withAuth"
+import schema from "../../assets/hoc_vs_hook_comparison.svg"
 
 /**
  * `DashboardContent` — Componente puro per il contenuto della dashboard.

@@ -1,0 +1,51 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+  STOP BTN
+───────────────────────────────────────────────────────────────────────────── */
+.stopBtn {
+	padding: 10px 24px;
+	background: var(--primary);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-size: 0.9rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: opacity 0.15s ease, transform 0.1s ease;
+	font-family: inherit;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+  CARD CRYPTO DATA
+───────────────────────────────────────────────────────────────────────────── */
+.cryptoDataRow {
+	display: flex;
+	justify-content: center;
+}
+
+.cryptoDataCard {
+	padding: 16px;
+	border-radius: 12px;
+	transition: all 0.3s ease;
+	width: 33%;
+	margin: 0 auto;
+}
+
+/* crescita */
+.up {
+	border: 2px solid green;
+	background-color: #e6f9e6;
+	color: #0a4d0a;
+}
+
+/* calo */
+.down {
+	border: 2px solid red;
+	background-color: #ffe6e6;
+	color: #660000;
+}
+
+/* neutro */
+.neutral {
+	border: 2px solid gray;
+	background-color: #333333;
+}

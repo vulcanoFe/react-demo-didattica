@@ -53,8 +53,8 @@
 
 import { useRef, useState } from "react"
 import styles from "./FormDemo.module.css"
-import ControlledForm from "../components/ControlledForm"
-import UncontrolledForm from "../components/UncontrolledForm"
+import ControlledForm from "./ControlledForm"
+import UncontrolledForm from "./UncontrolledForm"
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TIPI ESPORTATI

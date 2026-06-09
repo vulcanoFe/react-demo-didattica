@@ -41,9 +41,9 @@
  * sugli input stessi (che richiederebbe state aggiuntivo, rendendo il vantaggio minimo).
  */
 
-import styles from "../pages/FormDemo.module.css"
+import styles from "./FormDemo.module.css"
 import { useRef, useState } from "react"
-import type { FormEntry } from "../pages/FormDemo"
+import type { FormEntry } from "./FormDemo"
 
 // ─────────────────────────────────────────────────────────────────────────────
 // DATI STATICI
