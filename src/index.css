@@ -1,18 +1,29 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --primary: #ff3b3b;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --primary-bg: rgba(255, 59, 59, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --primary-border: rgba(255, 59, 59, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
+  --text: #5c6275;
+  --text-h: #141d38;
+
+  --bg: #ffffff;
+  --border: #e3e6f0;
+  --code-bg: #f4f6fb;
+
+  /* 🎯 MAIN (light) */
+  --accent: #141d38;
+  --accent-bg: rgba(20, 29, 56, 0.12);
+  --accent-border: rgba(20, 29, 56, 0.45);
+
+  /* ⚠️ AZIONI IMPORTANTI */
+  --primary: #e0b800;
+  --primary-bg: rgba(252, 219, 50, 0.15);
+  --primary-border: rgba(252, 219, 50, 0.45);
+
+  /* contrast */
+  --contrast: #fcdb32;
+
+  --social-bg: rgba(244, 246, 251, 0.6);
+
   --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    rgba(20, 29, 56, 0.08) 0 10px 15px -3px,
+    rgba(20, 29, 56, 0.04) 0 4px 6px -2px;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -23,29 +34,34 @@
   color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
+    --text: #c9cde0;
+    --text-h: #ffffff;
+
+    --bg: #1c2240;
+    --border: #3a4380;
+    --code-bg: #2a3260;
+
+    /* 🎯 MAIN (dark) */
+    --accent: #3447aa;
+    --accent-bg: rgba(52, 71, 170, 0.2);
+    --accent-border: rgba(52, 71, 170, 0.5);
+
+    /* ⚠️ AZIONI IMPORTANTI */
+    --primary: #ff6b6b;
+    --primary-bg: rgba(255, 107, 107, 0.18);
+    --primary-border: rgba(255, 107, 107, 0.5);
+
+    --contrast: #fbeaeb;
+
+    --social-bg: rgba(42, 50, 96, 0.6);
+
     --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+      rgba(0, 0, 0, 0.5) 0 10px 15px -3px,
+      rgba(0, 0, 0, 0.35) 0 4px 6px -2px;
   }
 }
 
@@ -59,6 +75,31 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+}
+
+/* 🔥 THEME MANUALE (override prefers-color-scheme) */
+:root[data-theme="light"] {
+  --accent: #141d38;
+  --accent-bg: rgba(20, 29, 56, 0.12);
+  --accent-border: rgba(20, 29, 56, 0.45);
+
+  --primary: #e0b800;
+  --primary-bg: rgba(252, 219, 50, 0.15);
+  --primary-border: rgba(252, 219, 50, 0.45);
+
+  --contrast: #fcdb32;
+}
+
+:root[data-theme="dark"] {
+  --accent: #3447aa;
+  --accent-bg: rgba(52, 71, 170, 0.2);
+  --accent-border: rgba(52, 71, 170, 0.5);
+
+  --primary: #ff6b6b;
+  --primary-bg: rgba(255, 107, 107, 0.18);
+  --primary-border: rgba(255, 107, 107, 0.5);
+
+  --contrast: #fbeaeb;
 }
 
 body {

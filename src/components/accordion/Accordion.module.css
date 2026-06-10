@@ -23,10 +23,10 @@
  */
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   ROOT — Accordion
-   Il contenitore principale. Usa le stesse variabili di bordo e ombra
-   del FormDemo per sembrare "della stessa famiglia" visiva.
-   ───────────────────────────────────────────────────────────────────────────── */
+  ROOT — Accordion
+  Il contenitore principale. Usa le stesse variabili di bordo e ombra
+  del FormDemo per sembrare "della stessa famiglia" visiva.
+───────────────────────────────────────────────────────────────────────────── */
 
 .accordion {
   border: 1px solid var(--border);
@@ -37,10 +37,10 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   ITEM — Accordion.Item
-   Contenitore di Header + Panel. Separa visivamente le voci con un bordo
-   inferiore, tranne l'ultima (usando :last-child).
-   ───────────────────────────────────────────────────────────────────────────── */
+  ITEM — Accordion.Item
+  Contenitore di Header + Panel. Separa visivamente le voci con un bordo
+  inferiore, tranne l'ultima (usando :last-child).
+───────────────────────────────────────────────────────────────────────────── */
 
 .item {
   border-bottom: 1px solid var(--border);
@@ -54,13 +54,13 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   HEADER — Accordion.Header
-   Pulsante cliccabile. Usa lo stesso sistema di colori degli input del form:
-   sfondo --code-bg a riposo, --accent-bg quando attivo (isOpen = true).
+	HEADER — Accordion.Header
+	Pulsante cliccabile. Usa lo stesso sistema di colori degli input del form:
+	sfondo --code-bg a riposo, --accent-bg quando attivo (isOpen = true).
 
-   Nota: la variante "aperta" viene gestita tramite una classe aggiuntiva
-   .headerOpen che il componente applica condizionalmente.
-   ───────────────────────────────────────────────────────────────────────────── */
+	Nota: la variante "aperta" viene gestita tramite una classe aggiuntiva
+	.headerOpen che il componente applica condizionalmente.
+───────────────────────────────────────────────────────────────────────────── */
 
 .header {
   cursor: pointer;
@@ -111,10 +111,10 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   ICONA FRECCIA (chevron)
-   Ruota di 180° quando il panel è aperto, con la stessa transizione del header.
-   È un elemento puramente decorativo (aria-hidden nel markup).
-   ───────────────────────────────────────────────────────────────────────────── */
+  ICONA FRECCIA (chevron)
+  Ruota di 180° quando il panel è aperto, con la stessa transizione del header.
+  È un elemento puramente decorativo (aria-hidden nel markup).
+───────────────────────────────────────────────────────────────────────────── */
 
 .chevron {
   font-size: 0.7rem;
@@ -130,14 +130,14 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   PANEL — Accordion.Panel
-   Contenuto espandibile. Stesso bordo laterale e inferiore del form,
-   angoli tondi solo in basso (il top è "attaccato" all'header sopra).
+  PANEL — Accordion.Panel
+  Contenuto espandibile. Stesso bordo laterale e inferiore del form,
+  angoli tondi solo in basso (il top è "attaccato" all'header sopra).
 
-   Animazione di entrata: stessa keyframe usata per la tabella nel FormDemo
-   (fadeIn + slide-up), così l'apertura dei panel e la comparsa delle righe
-   hanno un linguaggio visivo uniforme.
-   ───────────────────────────────────────────────────────────────────────────── */
+  Animazione di entrata: stessa keyframe usata per la tabella nel FormDemo
+  (fadeIn + slide-up), così l'apertura dei panel e la comparsa delle righe
+  hanno un linguaggio visivo uniforme.
+───────────────────────────────────────────────────────────────────────────── */
 
 .panel {
   padding: 14px 16px;

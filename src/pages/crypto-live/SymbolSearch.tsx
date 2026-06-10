@@ -61,10 +61,18 @@ export default function SymbolSearch({ onSelect }: Props) {
 				// API Binance exchangeInfo (tutti i simboli)
 				const res = await axios.get("https://api.binance.com/api/v3/exchangeInfo");
 
-				const symbols: string[] = res.data.symbols.map((s: any) => s.symbol.toLowerCase());
+				const symbols: string[] = res.data.symbols ?? [];
 
 				// filtro lato client TODO AGGIUNGERE FILTRO
-				const filtered = symbols.filter((s) => s.includes(input.toLowerCase())).slice(0, 10);
+				const filtered = symbols
+					.filter((s: any) => s.symbol.toLowerCase().includes(
+						input.toLowerCase()) &&
+						s.quoteAsset === 'USDT' &&
+						s.status === 'TRADING'
+					)
+					.map((s: any) => s.symbol)
+					.slice(0, 10);
+				console.log(filtered);
 
 				setResults(filtered);
 				setShowDropdown(true);

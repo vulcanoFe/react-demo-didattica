@@ -7,13 +7,36 @@ import Dashboard from './pages/hoc-vs-custom-hook/Dashboard'
 import DashboardHOC from './pages/hoc-vs-custom-hook/DashboardHOC'
 import Compound from './pages/compound-example/Compound'
 import { lazy, Suspense } from 'react'
+import { useTheme } from './hooks/useTheme'
 
 const CryptoLive = lazy(() => import('./pages/crypto-live/CryptoLive'));
 
 function App() {
 
+	const { theme, toggleTheme } = useTheme()
+
 	return (
 		<div>
+
+			{/* 🔥 TOGGLE THEME */}
+			<button
+				onClick={toggleTheme}
+				style={{
+					position: "fixed",
+					top: 16,
+					right: 16,
+					zIndex: 10000,
+					background: "var(--accent)",
+					color: "white",
+					border: "none",
+					borderRadius: "8px",
+					padding: "8px 12px",
+					cursor: "pointer"
+				}}
+			>
+				{theme === "dark" ? "☀️ Light" : "🌙 Dark"}
+			</button>
+
 			<h1>React Demo Didattica</h1>
 
 			<nav>
